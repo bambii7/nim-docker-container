@@ -4,7 +4,7 @@ import db_postgres
 
 var server = newAsyncHttpServer()
 
-proc cb(req: Request) {.async.} =
+proc callback(req: Request) {.async.} =
   let db = open("localhost", "", "", "awesome_sauce")
   let query = db.prepare("Get PG Version", sql"SELECT version();", 0)
   let dbResult = db.getValue(query)
@@ -14,4 +14,4 @@ proc cb(req: Request) {.async.} =
   let response = "Nim says Hello World! \n" & envMessage & "\n" & $dbResult
   await req.respond(Http200, response)
 
-waitFor server.serve(Port(8080), cb)
+waitFor server.serve(Port(8080), callback)
