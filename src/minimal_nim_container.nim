@@ -6,7 +6,7 @@ var server = newAsyncHttpServer()
 
 proc queryDB():string =
   try:
-    let db = open("", "", "", "dbname=awesome_sauce host=172.17.0.0/16 port=5432")
+    let db = open("", "", "", "dbname=POSTGRES host=172.17.0.0/16 port=5432")
     let query = db.prepare("Get PG Version", sql"SELECT version();", 0)
     result = db.getValue(query)
   except:
@@ -19,4 +19,4 @@ proc callback(req: Request) {.async.} =
   let response = "Nim says Hello World! \n" & envMessage & "\n" & $dbResult
   await req.respond(Http200, response)
 
-waitFor server.serve(Port(80), callback)
+waitFor server.serve(Port(8080), callback)
