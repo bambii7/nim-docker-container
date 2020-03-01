@@ -16,7 +16,7 @@ proc callback(req: Request) {.async.} =
   let dbResult = queryDB()
   let envMessage = getEnv("MESSAGE", "no message")
 
-  let response = "Nim says Hello World! \n" & envMessage & "\n" & $dbResult
+  let response = "Nim says Hello Worldz! \n" & envMessage & "\n" & $dbResult
   await req.respond(Http200, response)
 
-waitFor server.serve(Port(8080), callback)
+waitFor server.serve(Port(80), callback)
