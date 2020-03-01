@@ -4,10 +4,14 @@ RUN apk update && apk upgrade \
     libpq
 WORKDIR /build
 COPY . .
-RUN nimble build -d:release
-# CMD ["/build/minimal_nim_container"]
 
-FROM alpine:3.7
+RUN nimble build -d:release
+
+EXPOSE 80
+
+CMD ["/build/minimal_nim_container"]
+
+# FROM alpine:3.7
 # RUN apk update && apk upgrade \
 #     && apk add --update --no-cache \
 #     libpq
