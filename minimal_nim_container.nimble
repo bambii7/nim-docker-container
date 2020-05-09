@@ -9,4 +9,4 @@ bin           = @["minimal_nim_container"]
 
 # Dependencies
 
-requires "nim >= 1.2.0"
+requires "nim >= 1.0.0"
