@@ -1,4 +1,4 @@
-FROM nimlang/nim:alpine AS builder
+FROM nimlang/nim:1.2.0-alpine-onbuild AS builder
 RUN apk update && apk upgrade \
     && apk add --update --no-cache \
     libpq
